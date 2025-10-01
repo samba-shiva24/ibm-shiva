@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>E-commerce Product Card</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <div class="product-card">
+        <div class="product-image-container">
+            <img src="https://via.placeholder.com/300x200?text=Product+Image" alt="Stylish Product Name" class="product-image">
+        </div>
+        <div class="product-info">
+            <h2 class="product-title">Premium Wireless Headphones</h2>
+            <p class="product-description">Experience high-fidelity sound with superior comfort.</p>
+            <p class="product-price">$99.99</p>
+            <div class="product-actions">
+                <button class="add-to-cart-btn" data-product-id="HP001">Add to Cart</button>
+                <button class="quick-view-btn" id="quickViewBtn">Quick View</button>
+            </div>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
+body {
+    font-family: Arial, sans-serif;
+    background-color: #f4f4f9;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    margin: 0;
+}
+
+/* --- Product Card Container --- */
+.product-card {
+    background-color: #ffffff;
+    border-radius: 10px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+    max-width: 350px;
+    margin: 20px;
+    overflow: hidden;
+    transition: transform 0.3s ease;
+}
+
+.product-card:hover {
+    transform: translateY(-5px); /* Simple hover effect */
+}
+
+/* --- Image Styling --- */
+.product-image-container {
+    width: 100%;
+    height: 220px; /* Fixed height for consistency */
+    overflow: hidden;
+}
+
+.product-image {
+    width: 100%;
+    height: 100%;
+    object-fit: cover; /* Ensures image covers the area without distortion */
+    display: block;
+}
+
+/* --- Product Info --- */
+.product-info {
+    padding: 20px;
+    text-align: center;
+}
+
+.product-title {
+    font-size: 1.5em;
+    color: #333;
+    margin-top: 0;
+    margin-bottom: 5px;
+}
+
+.product-description {
+    font-size: 0.9em;
+    color: #666;
+    margin-bottom: 15px;
+    height: 36px; /* Limit height for uniform look */
+    overflow: hidden;
+}
+
+.product-price {
+    font-size: 1.8em;
+    color: #007bff; /* Primary brand color */
+    font-weight: bold;
+    margin-bottom: 20px;
+}
+
+/* --- Action Buttons --- */
+.product-actions {
+    display: flex;
+    gap: 10px;
+}
+
+.product-actions button {
+    flex: 1;
+    padding: 10px 15px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 1em;
+    transition: background-color 0.2s ease;
+}
+
+.add-to-cart-btn {
+    background-color: #28a745; /* Success/Add color */
+    color: white;
+}
+
+.add-to-cart-btn:hover {
+    background-color: #218838;
+}
+
+.quick-view-btn {
+    background-color: #e9ecef; /* Neutral/Secondary color */
+    color: #495057;
+}
+
+.quick-view-btn:hover {
+    background-color: #dae0e5;
+}
+document.addEventListener('DOMContentLoaded', () => {
+    // 1. Quick View Button Interaction
+    const quickViewButton = document.getElementById('quickViewBtn');
+
+    if (quickViewButton) {
+        quickViewButton.addEventListener('click', () => {
+            alert('Quick View feature coming soon!\nProduct: Premium Wireless Headphones');
+        });
+    }
+
+    // 2. Add to Cart Button Interaction (a more useful example)
+    const cartButtons = document.querySelectorAll('.add-to-cart-btn');
+
+    cartButtons.forEach(button => {
+        button.addEventListener('click', (event) => {
+            const productId = event.target.getAttribute('data-product-id');
+            alert(`Product ID ${productId} has been added to the shopping cart! (Simulated)`);
+            
+            // In a real application, you would send an AJAX request here
+            // to update the server and the shopping cart icon count.
+        });
+    });
+});
